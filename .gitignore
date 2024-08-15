@@ -1,0 +1,15 @@
+# Ignore specific archives and directories
+apache-zookeeper-3.8.4-bin.tar.gz
+kafka_2.13-3.8.0.tgz
+
+# Ignore all contents of specific directories
+kafka/
+zookeeper/
+# Ignore specific archives and directories
+apache-zookeeper-3.8.4-bin.tar.gz
+kafka_2.13-3.8.0.tgz
+
+# Ignore all contents of specific directories
+kafka/
+zookeeper/
+
