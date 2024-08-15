@@ -1,7 +1,7 @@
-Welcome to my BE HW project. This is my README.
+**Welcome to my BE HW project. This is my README.**
 
-How to get everything running
-  Note: Sorry it's kinda a lot, I didn't set up a way to auto seed the db and didn't look into spinning up my elixir producer/consumer with docker-compose 
+**How to get everything running**
+ _ Note: Sorry it's kinda a lot, I didn't set up a way to auto seed the db and didn't look into spinning up my elixir producer/consumer with docker-compose _
 1. cd into order_producer and run "docker-compose up"
 2. Open up pgAdmin on [port](http://127.0.0.1:9090/)
 3. Log in using the credentials in docker-compose.yml
@@ -18,7 +18,7 @@ How to get everything running
 7. cd into order_producer and run "mix run --no-halt"
 8. cd into inventory_consumer and run "mix run --no-halt"
 
-To see things moving:
+**To see things moving:**
 
 Read from topic: 
 bin/kafka-console-consumer.sh --topic orders --from-beginning --bootstrap-server localhost:9092
