@@ -1,0 +1,13 @@
+0000000000000000000000000000000000000000 6eccc33a3404365d373e8c5a76d585b8f5fb4b01 Emma Lowe <emma.lowe@anglepoint.com> 1723410433 +0000	branch: Created from refs/remotes/origin/master
+6eccc33a3404365d373e8c5a76d585b8f5fb4b01 82946b5f23f7aeed722bc45e787e7070aabda85b Emma Lowe <emma.lowe@anglepoint.com> 1723410688 +0000	commit (merge): Merge branch 'main'
+82946b5f23f7aeed722bc45e787e7070aabda85b 80a58484b9e3ab50ce94aa95f5141491f344a254 Emma Lowe <emma.lowe@anglepoint.com> 1723410911 +0000	commit: removed extra folder
+80a58484b9e3ab50ce94aa95f5141491f344a254 dbfaf90663305b921caee87f13c42eae025a603e Emma Lowe <emma.lowe@anglepoint.com> 1723488297 +0000	commit: built out consumer and producer files, got them subscribing and pushing to/from my topic, but just strings for now
+dbfaf90663305b921caee87f13c42eae025a603e 4d07e5740a149a71f2481c49e7ff7d1bd6e49fcd Emma Lowe <emma.lowe@anglepoint.com> 1723488338 +0000	pull: Merge made by the 'ort' strategy.
+4d07e5740a149a71f2481c49e7ff7d1bd6e49fcd 01c84bb88f766a299e30a4cca652b0c06bb709ce Emma Lowe <emma.lowe@anglepoint.com> 1723496740 +0000	commit: changed order string to order map, did json encoding to get order info into topic and txt file
+01c84bb88f766a299e30a4cca652b0c06bb709ce c873972ae7d5a5c60a8ca1c750b872992a13fddf Emma Lowe <emma.lowe@anglepoint.com> 1723498447 +0000	commit: added in order_simulator
+c873972ae7d5a5c60a8ca1c750b872992a13fddf 569ccadf7ce2421d23a906b5eca0ec9e11c10ff4 Emma Lowe <emma.lowe@anglepoint.com> 1723579124 +0000	commit: got db up and running, can get orders from db
+569ccadf7ce2421d23a906b5eca0ec9e11c10ff4 f4e88a19dabb2014f3581467fc2980a849a6c25f Emma Lowe <emma.lowe@anglepoint.com> 1723585244 +0000	commit: Saving order data to db
+f4e88a19dabb2014f3581467fc2980a849a6c25f 1ecb05bd2fe0c99928c84cecf3bcfe47208cbf10 Emma Lowe <emma.lowe@anglepoint.com> 1723599115 +0000	commit: cleaned up structure
+1ecb05bd2fe0c99928c84cecf3bcfe47208cbf10 46cf54692ba329fcc2acb99d5f0de8d8e2725de6 Emma Lowe <emma.lowe@anglepoint.com> 1723654474 +0000	commit: changes
+46cf54692ba329fcc2acb99d5f0de8d8e2725de6 db54a27aceeed3aed74df45337e2b4a7bc258a94 Emma Lowe <emma.lowe@anglepoint.com> 1723665360 +0000	commit: organized code
+db54a27aceeed3aed74df45337e2b4a7bc258a94 73f8c02b574cb3443248522c6ab8648103c2157f Emma Lowe <emma.lowe@anglepoint.com> 1723763743 +0000	commit: added error handling and moved files around

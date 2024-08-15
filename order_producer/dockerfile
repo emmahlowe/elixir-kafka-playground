@@ -1,0 +1,17 @@
+FROM elixir:latest
+
+WORKDIR /app
+
+# Install Hex & Rebar
+RUN mix local.hex --force && \
+    mix local.rebar --force
+
+# Copy mix files and fetch dependencies
+COPY mix.exs mix.lock ./
+RUN mix deps.get
+
+COPY . .
+
+RUN mix compile
+
+CMD ["mix", "run", "--no-halt"]
