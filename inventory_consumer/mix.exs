@@ -28,6 +28,7 @@ defmodule InventoryConsumer.MixProject do
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
       {:mox, "~> 1.0", only: [:test]},
+      {:brod, "~> 3.15"}
     ]
   end
 end

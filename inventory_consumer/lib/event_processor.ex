@@ -1,12 +1,12 @@
 defmodule EventProcessor do
   #EventProcessor variables
-  @client_id :my_client
-  @topic "inventory_updates"
+  @client_id :my_client2
+  @topic "inventoryUpdates"
   @partition 0
 
   # Starts the Kafka producer
   def start_producer do
-    :ok = :brod.start_producer(@client_id, @topic, _producer_config = [])
+    :ok = :brod.start_producer(@client_id, @topic, [])
   end
 
   #Send event to Kafka topic

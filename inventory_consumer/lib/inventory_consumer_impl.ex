@@ -37,7 +37,7 @@ end
   end
 
   def publish_inventory_updated_event(data) do
-    IO.write("publishing inventory updated event")
+    IO.inspect("publishing inventory updated event")
     #create inventory updated message
     inventory_update = %{
       inventory_id: 1,

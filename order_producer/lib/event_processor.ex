@@ -6,7 +6,13 @@ defmodule EventProcessor do
 
   # Starts the Kafka producer
   def start_producer do
-    :ok = :brod.start_producer(@client_id, @topic, _producer_config = [])
+    case :brod.start_producer(:my_client, "orders", []) do
+      :ok ->
+        :ok
+      {:error, reason} ->
+        Logger.error("Failed to start Kafka producer: #{inspect(reason)}")
+        {:error, reason}
+    end
   end
 
   #Send event to Kafka topic
