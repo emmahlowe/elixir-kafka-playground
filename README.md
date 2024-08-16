@@ -47,7 +47,6 @@ Code structure: I tried to split out working with the db and kafka server into s
 I would have liked to add a db seed file to ecto and figure that out as well as spin up both elixir apps from a docker file but didn't get to it. 
 
 Testing: I read through Mox's docks, installed it and got a basic test working in the inventory_consumer. Then I moved onto reorganizing code, getting the last inventory updates piece working and didn't go back and update my tests so I believe any that were working are broken. I have a question for you around how I could have better structured my code to make it more easily testable so I don't have to mock so many function calls. I couldn’t think of a better way to flow through the business logic and split things out into appropriate functions. If I have more time next week I might work on getting my tests up and running just for more practice with Mox since it seems like we will be using that in our new codebase. 
-![image](https://github.com/user-attachments/assets/3513e3bf-f7fb-409b-9a99-303f3c2c3f90)
 
 
 
