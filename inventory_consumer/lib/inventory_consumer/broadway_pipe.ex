@@ -2,7 +2,7 @@ defmodule MyBroadway do
   use Broadway
 
   def start_link(_opts) do
-    IO.write("console log 1")
+    IO.write("Starting Broadway Pipe")
     Broadway.start_link(__MODULE__,
       name: __MODULE__,
       producer: [
@@ -32,7 +32,7 @@ defmodule MyBroadway do
 
   @impl true
   def handle_message(_, message, _) do
-    InventoryConsumer.decode_event_message(message)
+    InventoryConsumer.process_order_event(message)
     message
   end
 

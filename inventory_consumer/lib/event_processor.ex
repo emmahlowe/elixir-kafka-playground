@@ -15,7 +15,16 @@ defmodule EventProcessor do
   end
 
   #encode message in JSON
-  def json_encode(message) do
-    Jason.encode!(message)
+  def json_encode(data) do
+    try do
+      {:ok, Jason.encode!(data)}
+    rescue
+      exception -> {:error, exception.message}
+    end
+  end
+
+  #decode message from JSON
+  def json_decode(message) do
+    Jason.decode(message)
   end
 end
