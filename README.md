@@ -28,8 +28,26 @@ OR open up pgAdmin (credentials and port in docker-compose.yml) and UI for Apach
 **Notes:**
 Rather than auto create kafka topics I found this handy option "KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'" so if you hit a message that a topic isn't created then it should try again and succeed the second time after the auto create takes care of business
 
-**Assumptions made:**
+**Assumptions made and rambles:**
 I assumed that an order could only have one product tied to it. See ERD below for inventory, order, product relationships. 
 ![image](https://github.com/user-attachments/assets/97cfcdbd-3f93-44bc-bf4c-c46820c21576)
+
+Separate Elixir apps: Separation of concerns and fault tolerance  if the inventory update system fails at least the order system can still be running
+
+One product per order: Made things simpler db wise if we had multiple products per order then I would have wanted to add another table to link products to orders and that would have added another layer of complexity to db interactions that I didn't want to deal with. IRL yes, we would want an app that allows customers to add multiple products to their cart and checkout in one order. 
+
+Logging: Right now errors and logging are just outputted to the terminal, given more time and if this was a real app I would have wanted to have an Kafka topic to send errors too and then another microservice to do something with the errors. For this I focused on an approach that made it so an error wouldn’t take down a microservice or clog up the pipe. 
+
+Error handling: I opted to do error handling in the core business logic functions rather than service functions that were made for db/kafka interactions. I did this so there was a standard tuple {:ok, data} or {:error, message} response from service functions and so that in the core business logic I could easily break out if there was an error. 
+
+Migrations: Migrations would be handled by just the order_producer app and not the inventory_consumer app. 
+
+Code structure: I tried to split out working with the db and kafka server into service functions in separate files to isolate functionality.  
+
+I would have liked to add a db seed file to ecto and figure that out as well as spin up both elixir apps from a docker file but didn't get to it. 
+
+Testing: I read through Mox's docks, installed it and got a basic test working in the inventory_consumer. Then I moved onto reorganizing code, getting the last inventory updates piece working and didn't go back and update my tests so I believe any that were working are broken. I have a question for you around how I could have better structured my code to make it more easily testable so I don't have to mock so many function calls. I couldn’t think of a better way to flow through the business logic and split things out into appropriate functions. If I have more time next week I might work on getting my tests up and running just for more practice with Mox since it seems like we will be using that in our new codebase. 
+![image](https://github.com/user-attachments/assets/3513e3bf-f7fb-409b-9a99-303f3c2c3f90)
+
 
 
