@@ -28,3 +28,7 @@ OR open up pgAdmin (credentials and port in docker-compose.yml) and UI for Apach
 **Notes**
 Rather than auto create kafka topics I found this handy option "KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'" so if you hit a message that a topic isn't created then it should try again and succeed the second time after the auto create takes care of business
 
+
+![image](https://github.com/user-attachments/assets/97cfcdbd-3f93-44bc-bf4c-c46820c21576)
+
+
