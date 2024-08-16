@@ -1,7 +1,7 @@
 **Welcome to my BE HW project. This is my README.**
 
 **How to get everything running**
-  Note: Sorry it's kinda a lot, I didn't set up a way to auto seed the db and didn't look into spinning up my elixir producer/consumer with docker-compose 
+  
 1. cd into order_producer and run "docker-compose up"
 2. Open up pgAdmin on [port](http://127.0.0.1:9090/)
 3. Log in using the credentials in docker-compose.yml
@@ -24,4 +24,7 @@ Read from topic:
 bin/kafka-console-consumer.sh --topic orders --from-beginning --bootstrap-server localhost:9092
 
 OR open up pgAdmin (credentials and port in docker-compose.yml) and UI for Apache Kafka on the approriate ports
+
+**Notes**
+Rather than auto create kafka topics I found this handy option "KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'" so if you hit a message that a topic isn't created then it should try again and succeed the second time after the auto create takes care of business
 
