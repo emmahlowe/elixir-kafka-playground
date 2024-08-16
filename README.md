@@ -25,10 +25,11 @@ bin/kafka-console-consumer.sh --topic orders --from-beginning --bootstrap-server
 
 OR open up pgAdmin (credentials and port in docker-compose.yml) and UI for Apache Kafka on the approriate ports
 
-**Notes**
+**Notes:**
 Rather than auto create kafka topics I found this handy option "KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'" so if you hit a message that a topic isn't created then it should try again and succeed the second time after the auto create takes care of business
 
-
+**Assumptions made:**
+I assumed that an order could only have one product tied to it. See ERD below for inventory, order, product relationships. 
 ![image](https://github.com/user-attachments/assets/97cfcdbd-3f93-44bc-bf4c-c46820c21576)
 
 
