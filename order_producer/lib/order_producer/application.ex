@@ -9,13 +9,6 @@ defmodule OrderProducer.Application do
   def start(_type, _args) do
     children = [
       OrderProducer.Repo,
-      # %{
-      #   id: :brod_client,
-      #   start: {:brod_client, :start_link, [[localhost: 9092], :my_client, []]},
-      #   type: :worker,
-      #   restart: :permanent,
-      #   shutdown: 5000
-      # },
       {Task, fn -> start_periodic_tasks() end}
     ]
 

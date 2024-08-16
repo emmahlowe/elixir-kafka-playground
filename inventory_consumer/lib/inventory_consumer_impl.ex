@@ -3,7 +3,6 @@ defmodule InventoryConsumer do
   * Subscribes to "OrderCreated" events from Kafka
   * Updates inventory levels in PostgreSQLl
   * Publishes "InventoryUpdated" events to Kafka
-
   """
   @behaviour InventoryConsumerBeh
 
@@ -47,7 +46,6 @@ defmodule InventoryConsumer do
         end
     end
   end
-
 
   def prepare_inventory_updated_event(data, inventory_record) do
     IO.inspect("Preparing inventory updated event #{inventory_record.id}")
