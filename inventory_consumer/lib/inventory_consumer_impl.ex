@@ -32,10 +32,22 @@ end
         changeset = InventoryDbService.create_update_quantity_changeset(inventory_item, new_quantity)
 
         InventoryDbService.update_database(changeset)
+        publish_inventory_updated_event(data)
     end
   end
 
-  def publish_inventory_updated_event() do
-
+  def publish_inventory_updated_event(data) do
+    IO.write("publishing inventory updated event")
+    #create inventory updated message
+    inventory_update = %{
+      inventory_id: 1,
+      new_quantity: data["quantity"],
+      updated_on: data["order_date"]
+    }
+    #encode message
+    json_message = EventProcessor.json_encode(inventory_update)
+    EventProcessor.start_producer()
+    #publish event to kafka
+    EventProcessor.send_event(json_message)
   end
 end
