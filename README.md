@@ -1,40 +1,129 @@
-**Welcome to my BE HW project. This is my README.**
 
-**How to get everything running**
-  
-1. cd into order_producer and run "docker-compose up"
-2. Open up pgAdmin on [port](http://127.0.0.1:9090/)
-3. Log in using the credentials in docker-compose.yml
-4. Run this TSQL script on the products table 
-   INSERT INTO products (name, description, price) VALUES
-  ('Wireless Keyboard', 'Logitech bluetooth wireless keyboard', 29.99),
+
+# **Elixir, PostgreSQL and Kafka Learning Project 🚀**
+
+This project was built **from scratch in just one week** as part of a hands-on learning experience. It was created in response to the following prompt:
+
+> Objective
+> 
+> Create a simple event-driven system using Elixir, PostgreSQL, and
+> Kafka. This project will simulate a basic e-commerce order processing
+> system with a focus on event-driven architecture.
+> 
+> Project Description
+> 
+> You will build two services:
+> 
+> 1. Order Producer
+> 2. Inventory Consumer
+> 
+> Order Producer
+> 
+> * Generates simulated order events
+> * Stores order details in PostgreSQL
+> * Publishes "OrderCreated" events to Kafka
+> 
+> Inventory Consumer
+> 
+> * Subscribes to "OrderCreated" events from Kafka
+> * Updates inventory levels in PostgreSQLl
+> * Publishes "InventoryUpdated" events to Kafka
+> 
+> Technical Requirements
+> 
+> 1. Use Elixir for both services
+> 2. Use Ecto for database interactions
+> 3. Utilize the Kafka client library for Elixir (e.g., KafkaEx)
+> 4. Implement basic error handling and logging
+> 5. Write unit tests for core business logic
+> 6. Use Mix for project management and dependency handling
+> 
+> Review Criteria
+> 
+> 1. Code organization
+> 2. Understanding of event-driven architecture
+> 3. Database design and usage
+> 4. Kafka integration (producing and consuming events)
+> 5. Error handling and logging
+
+## 🚀 How to Get Everything Running
+
+**1️⃣ Start the Services**
+
+1.  Navigate to the order_producer directory:
+`cd order_producer`
+2.  Start the services using Docker Compose:
+`docker-compose up`
+3.  Open **pgAdmin** on [localhost:9090](http://localhost:9090).
+4.  Log in using the credentials found in docker-compose.yml.
+
+**2️⃣ Seed the Database**
+**🗃️ Insert Sample Data into products Table**
+
+Run the following **TSQL script** on the products table:
+
+`INSERT INTO products (name, description, price) VALUES
+  ('Wireless Keyboard', 'Logitech Bluetooth wireless keyboard', 29.99),
   ('USB-C Hub', 'USB-C Hub description', 20),
   ('Monitor Stand', 'This adjustable wooden monitor stand can support up to 100 lbs', 45.5),
-  ('Bluetooth Mouse', 'Bluetooth mouse with color changing lights. Mousepad is included.', 15.25);
-5. Run this TSQL script on the inventory table
-   INSERT INTO inventory (product_id, quantity, inserted_at, updated_at) VALUES
-  (3, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-  (4, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
-7. cd into order_producer and run "mix run --no-halt"
-8. cd into inventory_consumer and run "mix run --no-halt"
+  ('Bluetooth Mouse', 'Bluetooth mouse with color-changing lights. Mousepad included.', 15.25);`
 
-**To see things moving:**
+**📦 Insert Sample Data into inventory Table**
+Run the following **TSQL script** on the inventory table:
 
-Read from topic: 
-bin/kafka-console-consumer.sh --topic orders --from-beginning --bootstrap-server localhost:9092
+`INSERT INTO inventory (product_id, quantity, inserted_at, updated_at) VALUES
+(3, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(4, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);`
 
-OR open up pgAdmin (credentials and port in docker-compose.yml) and UI for Apache Kafka on the approriate ports
+**3️⃣ Start the Elixir Applications**
 
-**Notes:**
-Rather than auto create kafka topics I found this handy option "KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'" so if you hit a message that a topic isn't created then it should try again and succeed the second time after the auto create takes care of business
+1.  Start the **order producer**:
+`cd order_producer`
+`mix run --no-halt`
+2.  Start the **inventory consumer**:
+`cd inventory_consumer`
+`mix run --no-halt`
 
-**Assumptions made and rambles:**
-I assumed that an order could only have one product tied to it. See ERD below for inventory, order, product relationships. 
-![image](https://github.com/user-attachments/assets/97cfcdbd-3f93-44bc-bf4c-c46820c21576)
+## 🔍 How to Observe the System in Action
 
-One product per order: Made things simpler db wise if we had multiple products per order then I would have wanted to add another table to link products to orders and that would have added another layer of complexity to db interactions that I didn't want to deal with. IRL yes, we would want an app that allows customers to add multiple products to their cart and checkout in one order. 
+**Option 1: Read from the Kafka Topic**
 
-I would have liked to add a db seed file to ecto and figure that out as well as spin up both elixir apps from a docker file but didn't get to it. 
+Use the Kafka console consumer to view messages in the orders topic:
+`bin/kafka-console-consumer.sh --topic orders --from-beginning --bootstrap-server localhost:9092`
+
+**Option 2: Use UI Tools**
+
+•  Open **pgAdmin** and inspect the database (credentials and port are in docker-compose.yml).
+
+•  Open **UI for Apache Kafka** on the appropriate ports for a visual view of Kafka topics.
 
 
+## 📝 Notes
 
+**Auto-Creating Kafka Topics**
+
+Rather than manually creating Kafka topics, I enabled this handy option in docker-compose.yml:
+
+`KAFKA_AUTO_CREATE_TOPICS_ENABLE:  'true'`
+
+If you encounter an error due to a missing topic, Kafka should retry and succeed once **auto-creation** kicks in.
+
+## **💡 Assumptions & Design Choices**
+
+•  One Product per Order:
+
+I assumed an order could only have **one product** tied to it.
+
+•  This **simplifies** the database structure.
+
+•  If multiple products per order were required, I would have introduced a **join table** to associate orders with multiple products.
+
+•  In a real-world app, we’d allow users to add **multiple products** to their cart and check out in a single order.
+
+**Potential Improvements I Didn’t Get To**:
+
+•  Adding an **Ecto seed file** for easier database setup.
+
+•  Automating the startup of **both Elixir apps** using a **Dockerfile**.
+
+## **📌 Entity-Relationship Diagram (ERD)**
